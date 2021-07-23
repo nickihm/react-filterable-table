@@ -74,6 +74,8 @@ class Header extends React.Component {
 							exactFilters={this.props.exactFilters}
 							removeExactFilter={this.props.removeExactFilter}
 							/>
+
+						<div className="export">Download</div>
 					</div>
 					<div className="col-sm-4 hidden-xs">
 						{this.props.pager}

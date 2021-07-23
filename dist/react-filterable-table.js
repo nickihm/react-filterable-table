@@ -1001,7 +1001,12 @@ return /******/ (function(modules) { // webpackBootstrap
 							_react2.default.createElement(_ExactFilters2.default, {
 								exactFilters: this.props.exactFilters,
 								removeExactFilter: this.props.removeExactFilter
-							})
+							}),
+							_react2.default.createElement(
+								'div',
+								{ className: 'export' },
+								'Download'
+							)
 						),
 						_react2.default.createElement(
 							'div',
