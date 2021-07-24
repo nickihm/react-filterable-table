@@ -456,6 +456,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				);
 
 				var filteredEntries = (0, _FilterAndSort2.default)(this.state.entries, {
+					namespace: this.props.namespace,
 					filter: this.state.filter,
 					exactFilters: this.state.exactFilters,
 					fieldFilters: this.state.fieldFilters,
@@ -1001,12 +1002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							_react2.default.createElement(_ExactFilters2.default, {
 								exactFilters: this.props.exactFilters,
 								removeExactFilter: this.props.removeExactFilter
-							}),
-							_react2.default.createElement(
-								'div',
-								{ className: 'export' },
-								'Download'
-							)
+							})
 						),
 						_react2.default.createElement(
 							'div',
@@ -1178,7 +1174,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function FilterAndSort(array, options) {
 		array = array || [];
-		var filter = options.filter,
+		var namespace = options.namespace,
+		    filter = options.filter,
 		    exactFilters = options.exactFilters,
 		    fieldFilters = options.fieldFilters,
 		    sortFields = options.sortFields,
@@ -1250,6 +1247,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			});
 			return MultiSort(records, sortKeys);
 		}
+
+		console.log('filtered-' + namespace, records);
+		localStorage.setItem('filtered-' + namespace, records);
+
 		return records;
 	}
 
