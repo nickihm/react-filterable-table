@@ -270,6 +270,15 @@ return /******/ (function(modules) { // webpackBootstrap
 					page: 0
 				});
 
+				var filteredEntries = (0, _FilterAndSort2.default)(this.state.entries, {
+					filter: this.state.filter,
+					exactFilters: this.state.exactFilters,
+					fieldFilters: this.state.fieldFilters,
+					sortFields: this.state.sortFields,
+					fields: fields
+				});
+				localStorage.setItem('filtered-' + this.props.namespace, filteredEntries);
+
 				this.scrollIntoView();
 			}
 		}, {
@@ -456,7 +465,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				);
 
 				var filteredEntries = (0, _FilterAndSort2.default)(this.state.entries, {
-					namespace: this.props.namespace,
 					filter: this.state.filter,
 					exactFilters: this.state.exactFilters,
 					fieldFilters: this.state.fieldFilters,
@@ -1174,8 +1182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function FilterAndSort(array, options) {
 		array = array || [];
-		var namespace = options.namespace,
-		    filter = options.filter,
+		var filter = options.filter,
 		    exactFilters = options.exactFilters,
 		    fieldFilters = options.fieldFilters,
 		    sortFields = options.sortFields,
@@ -1247,10 +1254,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			});
 			return MultiSort(records, sortKeys);
 		}
-
-		console.log('filtered-' + namespace, records);
-		localStorage.setItem('filtered-' + namespace, records);
-
 		return records;
 	}
 
